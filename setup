@@ -1,0 +1,115 @@
+for i in * ; do mv $i $i".jpg" ; done #批量添加后缀
+
+
+grep -v "disk_error" /log/pc1/messages > /log/pc1/messages.new #删除含有关键字的行
+
+
+yum install unzip -y
+wget https://downloads.rclone.org/rclone-current-linux-amd64.zip
+unzip rclone-current-linux-amd64.zip
+cd rclone-*/
+mv rclone /usr/bin/
+mv rclone.1 /usr/local/share/man/man1/
+cd ..
+rm -rf rclone-*
+
+n) New remote
+s) Set configuration password
+q) Quit config
+n/s/q> n
+name> Rats  #随便填，后面要用到
+Type of storage to configure.
+Choose a number from below, or type in your own value
+ 1 / Amazon Drive
+   \ "amazon cloud drive"
+ 2 / Amazon S3 (also Dreamhost, Ceph, Minio)
+   \ "s3"
+ 3 / Backblaze B2
+   \ "b2"
+ 4 / Box
+   \ "box"
+ 5 / Cache a remote
+   \ "cache"
+ 6 / Dropbox
+   \ "dropbox"
+ 7 / Encrypt/Decrypt a remote
+   \ "crypt"
+ 8 / FTP Connection
+   \ "ftp"
+ 9 / Google Cloud Storage (this is not Google Drive)
+   \ "google cloud storage"
+10 / Google Drive
+   \ "drive"
+11 / Hubic
+   \ "hubic"
+12 / Local Disk
+   \ "local"
+13 / Microsoft Azure Blob Storage
+   \ "azureblob"
+14 / Microsoft OneDrive
+   \ "onedrive"
+15 / Openstack Swift (Rackspace Cloud Files, Memset Memstore, OVH)
+   \ "swift"
+16 / Pcloud
+   \ "pcloud"
+17 / QingCloud Object Storage
+   \ "qingstor"
+18 / SSH/SFTP Connection
+   \ "sftp"
+19 / Webdav
+   \ "webdav"
+20 / Yandex Disk
+   \ "yandex"
+21 / http Connection
+   \ "http"
+Storage> 14  #选择14，Microsoft OneDrive
+Microsoft App Client Id - leave blank normally.
+client_id>  #留空 
+Microsoft App Client Secret - leave blank normally.
+client_secret>  #留空 
+Remote config
+Choose OneDrive account type?
+ * Say b for a OneDrive business account
+ * Say p for a personal OneDrive account
+b) Business
+p) Personal
+b/p> p  #这里选择个人版，你想挂载Business就选择b
+Use auto config?
+ * Say Y if not sure
+ * Say N if you are working on a remote or headless machine
+y) Yes
+n) No
+y/n> n  #选择n
+For this to work, you will need rclone available on a machine that has a web browser available.
+Execute the following on your machine:
+    rclone authorize "onedrive"
+Then paste the result below:
+result> {"access_token":""}  #输入之前在客户端授权的内容
+--------------------
+[Rats]
+client_id = 
+client_secret = 
+token = {"access_token":""}
+--------------------
+y) Yes this is OK
+e) Edit this remote
+d) Delete this remote
+y/e/d> y  选择y
+Current remotes:
+
+Name                 Type
+====                 ====
+Rats                 onedrive
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q> q  #选择q退出
+mkdir /root/OneDrive
+#挂载为磁盘
+rclone mount DriveName:Folder LocalFolder --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000
+
