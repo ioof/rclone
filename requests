@@ -5,3 +5,8 @@ yum -y install python-pip
 pip install --upgrade pip
 
 pip install requests
+pip install pyopenssl ndg-httpsclient pyasn1 #解决ssl报警
+
+yum install htop #CPU 内存监控
+yum install iotop #磁盘监控
+yum install iftop #网络监控
