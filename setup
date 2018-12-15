@@ -15,7 +15,10 @@ ls -l |grep "^ｄ"|wc -l
 #统计文件夹下目录的个数，包括子文件夹里的
 
 ls -lR|grep "^d"|wc -l
+#
+#linux下递归列出目录下的所有文件名（不包括目录），并且去掉空行
 
+ls -lR |grep -v ^d|awk '{print $9}' |tr -s '\n'
 
 yum install unzip -y
 wget https://downloads.rclone.org/rclone-current-linux-amd64.zip
