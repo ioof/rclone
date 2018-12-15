@@ -4,21 +4,35 @@ for i in * ; do mv $i $i".jpg" ; done #批量添加后缀
 grep -v "disk_error" /log/pc1/messages > /log/pc1/messages.new #删除含有关键字的行
 
 #统计某文件夹下文件的个数
-
 ls -l |grep "^-"|wc -l
+
 #统计文件夹下文件的个数，包括子文件夹里的
-
 ls -lR|grep "^-"|wc -l
+
 #统计某文件夹下目录的个数
-
 ls -l |grep "^ｄ"|wc -l
-#统计文件夹下目录的个数，包括子文件夹里的
 
+#统计文件夹下目录的个数，包括子文件夹里的
 ls -lR|grep "^d"|wc -l
+
 #
 #linux下递归列出目录下的所有文件名（不包括目录），并且去掉空行
 
 ls -lR |grep -v ^d|awk '{print $9}' |tr -s '\n'
+
+
+
+查找并删除当前目录空文件
+find . -size 0k
+find . -size 0k -exec rm {} \;
+查找并删除 小于500K的文件 小于是- 大于是+
+find . -size -500k
+find . -size -500k -exec rm {} \;
+
+#查询出所有的空文件夹
+find -type d -empty
+#删除空文件夹
+find -type d -empty -exec rm -rf {} \;
 
 yum install unzip -y
 wget https://downloads.rclone.org/rclone-current-linux-amd64.zip
