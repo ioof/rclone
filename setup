@@ -21,6 +21,14 @@ ls -lR|grep "^d"|wc -l
 
 ls -lR |grep -v ^d|awk '{print $9}' |tr -s '\n'
 
+交集，把两个文件放到一起排序，只输出次数多于一次的项：
+$ sort a.txt b.txt | uniq -d
+
+并集，把两个文件放到一起排序，重复的项只算一次：
+$ sort a.txt b.txt | uniq
+
+差集(A-B)，把B的元素重复2份和A的元素放到一起排序，只输出出现一次的项：
+$ sort a.txt b.txt b.txt | uniq -u
 
 
 查找并删除当前目录空文件
