@@ -1,5 +1,7 @@
 for i in * ; do mv $i $i".jpg" ; done #批量添加后缀
 
+tar cvf - zencart | pigz > zencart.20170301_164100.tar.gz
+
 ls -lht#列出文件大小
 
 grep -v "disk_error" /log/pc1/messages > /log/pc1/messages.new #删除含有关键字的行
