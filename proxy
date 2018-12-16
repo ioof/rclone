@@ -1,0 +1,5 @@
+cmd如果要设置代理的话，需要在执行其他命令之前，先执行一下
+
+
+set http_proxy=http://127.0.0.1:1189
+set https_proxy=http://127.0.0.1:1189
