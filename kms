@@ -1,3 +1,5 @@
+cscript ospp.vbs /dstatus
+
 
 slmgr /skms santos.3322.org
 
