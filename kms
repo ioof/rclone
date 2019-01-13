@@ -44,3 +44,9 @@ cscript "C:\Program Files (x86)\Microsoft Office\Office16\OSPP.VBS" /sethst:sant
 
  
 cscript ospp.vbs /act
+
+cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+
+【Office Professional Plus 2016：XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99】
+
+【Office Standard 2016：JNRGM-WHDWX-FJJG3-K47QV-DRTFM】
