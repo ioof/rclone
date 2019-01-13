@@ -1,0 +1,44 @@
+
+slmgr /skms santos.3322.org
+
+slmgr /ato
+
+VL版本的镜像一般内置GVLK key，用于kms激活。如果你手动输过其他key，那么这个内置的key就会被替换掉，这个时候如果你想用kms，那么就需要把GVLK key输回去。首先，
+
+到https://technet.microsoft.com/en-us/library/jj612867.aspx获取你对应版本的KEY
+
+ 
+
+如果不知道自己的系统是什么版本，可以运行以下命令查看系统版本：
+
+wmic os get caption
+ 
+
+得到对应key之后，使用管理员权限运行cmd执行安装key：
+
+ 
+slmgr /ipk xxxxx-xxxxx-xxxxx-xxxxx
+
+
+
+cd C:\Program Files (x86)\Microsoft Office\Office16
+ 
+
+然后执行注册kms服务器地址：
+
+ 
+cscript ospp.vbs /sethst:santos.3322.org
+ 
+
+/sethst参数就是指定kms服务器地址。
+
+一般ospp.vbs可以拖进去cmd窗口，所以也可以这么弄：
+
+ 
+cscript "C:\Program Files (x86)\Microsoft Office\Office16\OSPP.VBS" /sethst:santos.3322.org
+ 
+
+一般来说，“一句命令已经完成了”，但一般office不会马上连接kms服务器进行激活，所以我们额外补充一条手动激活命令：
+
+ 
+cscript ospp.vbs /act
