@@ -2,6 +2,7 @@ cscript ospp.vbs /dstatus
 
 
 slmgr /skms santos.3322.org
+slmgr /skms 119.28.176.144
 slmgr -ipk M7XTQ-FN8P6-TTKYV-9D4CC-J462D
 
 slmgr /ato
